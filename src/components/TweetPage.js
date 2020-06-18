@@ -5,7 +5,7 @@ import NewTweet from "./NewTweet";
 
 class TweetPage extends Component {
   render() {
-    const { id, replies } = props.match.params;
+    const { id, replies } = this.props;
     return (
       <div>
         <Tweet id={id} />
@@ -20,7 +20,7 @@ class TweetPage extends Component {
         </ul>
       </div>
     );
-  }
+  } 
 }
 
 function mapStateToProps({ authedUser, tweets, users }, props) {
