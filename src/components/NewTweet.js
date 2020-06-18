@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { handleAddTweet } from "../actions/tweets";
 
 class NewTweet extends Component {
   state = {
@@ -16,8 +18,9 @@ class NewTweet extends Component {
     e.preventDefault();
 
     const { text } = this.state;
+    const { dispatch, id } = this.props;
 
-    console.log("New tweet: ", text);
+    dispatch(handleAddTweet(text, id));
 
     this.setState(() => ({
       text: "",
@@ -39,11 +42,13 @@ class NewTweet extends Component {
             maxLength={280}
           />
           {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>}
-          <button className="btn" type="submit" disabled = {text === ""}>Submit</button>
+          <button className="btn" type="submit" disabled={text === ""}>
+            Submit
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default NewTweet;
+export default connect()(NewTweet);
