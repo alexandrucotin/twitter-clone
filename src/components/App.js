@@ -10,7 +10,6 @@ class App extends Component {
     this.props.dispatch(handleInitialData());
   }
   render() {
-    console.log(this.props.loading);
     return (
       <div>
         <LoadingBar />
